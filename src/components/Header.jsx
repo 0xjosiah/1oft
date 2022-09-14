@@ -8,6 +8,7 @@ export default function Header() {
             </Link>
             <Link to="/cart">
                 <i className="ri-shopping-cart-2-fill ri-xl"></i>
+                <i className="ri-shopping-cart-2-line ri-xl"></i> {/**change based on if cart full or not */}
             </Link>
         </header>
     )
