@@ -7,7 +7,7 @@ export default function Header() {
                 <h2>1oft</h2>
             </Link>
             <Link to="/cart">
-                <i className="ri-shopping-cart-line ri-fw ri-2x"></i>
+                <i className="ri-shopping-cart-2-fill ri-xl"></i>
             </Link>
         </header>
     )
