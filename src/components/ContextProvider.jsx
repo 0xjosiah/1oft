@@ -5,18 +5,12 @@ const Context = createContext()
 function ContextProvider({children}) {
     const [allPhotos, setAllPhotos] = useState([])
     
-
     useEffect(() => {
-        fetch("https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json", {
-            mode: "no-cors",
-            headers: {
-                'Content-Type': 'application/json',
-              }
-        })
+        fetch("https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json")
             .then(res => res.json())
             .then(data => setAllPhotos(data))
     }, [])
-    console.log(allPhotos)
+
     return (
         <Context.Provider value={{allPhotos}}>
             {children}
