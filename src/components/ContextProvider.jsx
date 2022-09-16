@@ -6,11 +6,13 @@ function ContextProvider({children}) {
     const [allPhotos, setAllPhotos] = useState([])
 
     const toggleFavorite = (id) => {
-        for(let photo of allPhotos) {
+        let updatedPhotos = allPhotos.map(photo => {
             if(id === photo.id) {
-                photo.isFavorite = !photo.isFavorite
+                return { ...photo, isFavorite: !photo.isFavorite }
             }
-        }
+            return photo
+        })
+        setAllPhotos(updatedPhotos)
     }
     
     useEffect(() => {
