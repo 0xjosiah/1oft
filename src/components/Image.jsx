@@ -12,7 +12,7 @@ export default function Image({className, img, toggleFavorite}) {
         >
             {isHovered && (
                 <>
-                    <i onClick={() => toggleFavorite(id)} id={id} className="ri-heart-line favorite"></i>
+                    <i onClick={() => toggleFavorite(id)} className={`ri-heart-${isFavorite ? 'fill' : 'line'} favorite`}></i>
                     <i  className="ri-add-circle-line cart"></i>
                 </>
             )}
