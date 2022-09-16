@@ -4,6 +4,14 @@ const Context = createContext()
 
 function ContextProvider({children}) {
     const [allPhotos, setAllPhotos] = useState([])
+
+    const toggleFavorite = (id) => {
+        for(let photo of allPhotos) {
+            if(id === photo.id) {
+                photo.isFavorite = !photo.isFavorite
+            }
+        }
+    }
     
     useEffect(() => {
         fetch("https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json")
@@ -12,7 +20,7 @@ function ContextProvider({children}) {
     }, [])
 
     return (
-        <Context.Provider value={{allPhotos}}>
+        <Context.Provider value={{allPhotos, toggleFavorite}}>
             {children}
         </Context.Provider>
     )
