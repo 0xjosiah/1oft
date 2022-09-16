@@ -1,8 +1,13 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { Context } from "./ContextProvider"
 
-export default function Image({className, img, toggleFavorite}) {
+export default function Image({className, img}) {
     const [isHovered, setIsHovered] = useState(false)
+    const {toggleFavorite} = useContext(Context)
+
     const {url, id, isFavorite} = img
+
+    // const favIcon = isHovered && 
 
     return (
         <div 
