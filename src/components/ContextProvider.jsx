@@ -19,8 +19,7 @@ function ContextProvider({children}) {
     const addToCart = photoObj => setCartItems(prev => [...prev, photoObj])
 
     const removeFromCart = photoObj => {
-        const filtered = cartItems.filter(item => item.id !== photoObj.id)
-        setCartItems(filtered)
+        setCartItems(prev => prev.filter(item => item.id !== photoObj.id))
     }
 
     console.log(cartItems)
