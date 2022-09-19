@@ -18,6 +18,12 @@ function ContextProvider({children}) {
 
     const addToCart = photoObj => setCartItems(prev => [...prev, photoObj])
 
+    const removeFromCart = photoObj => {
+        const filtered = cartItems.filter(item => item.id !== photoObj.id)
+        setCartItems(filtered)
+    }
+
+    console.log(cartItems)
     useEffect(() => {
         fetch("https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json")
             .then(res => res.json())
@@ -25,7 +31,7 @@ function ContextProvider({children}) {
     }, [])
 
     return (
-        <Context.Provider value={{allPhotos, toggleFavorite, addToCart, cartItems}}>
+        <Context.Provider value={{allPhotos, toggleFavorite, addToCart, cartItems, removeFromCart}}>
             {children}
         </Context.Provider>
     )
