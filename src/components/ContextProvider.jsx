@@ -18,9 +18,7 @@ function ContextProvider({children}) {
 
     const addToCart = photoObj => setCartItems(prev => [...prev, photoObj])
 
-    const removeFromCart = photoObj => {
-        setCartItems(prev => prev.filter(item => item.id !== photoObj.id))
-    }
+    const removeFromCart = photoObj => setCartItems(prev => prev.filter(item => item.id !== photoObj.id))
 
     console.log(cartItems)
     useEffect(() => {
