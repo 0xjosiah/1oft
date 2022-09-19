@@ -4,7 +4,7 @@ import { Context } from "./ContextProvider"
 
 function Image({className, img}) {
     const [isHovered, setIsHovered] = useState(false)
-    const {toggleFavorite, addToCart} = useContext(Context)
+    const {toggleFavorite, addToCart, cartItems} = useContext(Context)
     const {url, id, isFavorite} = img
 
     const favorited = isFavorite && <i onClick={() => toggleFavorite(id)} className={`ri-heart-fill favorite`}></i>
@@ -18,7 +18,10 @@ function Image({className, img}) {
             {isHovered && (
                 <>
                     <i onClick={() => toggleFavorite(id)} className={`ri-heart-line favorite`}></i>
-                    <i  onClick={() => addToCart(img)} className="ri-add-circle-line cart"></i>
+                    {cartItems.some(item => item.id === id) ? 
+                        <i className="ri-shopping-cart-fill cart"></i> :
+                        <i onClick={() => addToCart(img)} className="ri-add-circle-line cart"></i>
+                    }
                 </>
             )}
             {favorited}
