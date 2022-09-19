@@ -1,7 +1,8 @@
 import { useState, useContext } from "react"
+import PropTypes from "prop-types"
 import { Context } from "./ContextProvider"
 
-export default function Image({className, img}) {
+function Image({className, img}) {
     const [isHovered, setIsHovered] = useState(false)
     const {toggleFavorite} = useContext(Context)
     const {url, id, isFavorite} = img
@@ -25,3 +26,14 @@ export default function Image({className, img}) {
         </div>
     )
 }
+
+Image.propTypes = {
+    className: PropTypes.string,
+    img: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        isFavorite: PropTypes.bool
+    })
+}
+
+export default Image
