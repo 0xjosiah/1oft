@@ -7,14 +7,21 @@ function Cart() {
     const cartImgs = cartItems.map(item => (
         <CartItem key={item.id} item={item} />
     ))
-    return (
-        <main className="cart-page">
-            <h1>Check out</h1>
-            {cartItems.length ? cartImgs : 'Your cart is empty'}
+
+    const checkOutUI = (
+        <>
+            {cartImgs}
             <p className="total-cost">Total: </p>
             <div className="order-button">
                 <button>Place Order</button>
             </div>
+        </>
+    )
+
+    return (
+        <main className="cart-page">
+            <h1>Check out</h1>
+            {cartItems.length ? checkOutUI : 'Your cart is empty'}
         </main>
     )
 }
