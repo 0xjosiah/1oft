@@ -3,20 +3,19 @@ import CartItem from "../components/CartItem"
 import { Context } from "../components/ContextProvider"
 
 function Cart() {
-    const [isOrdered, setIsOrdered] = useState(false)
+    const [buttonText, setButtonText] = useState("Place Order")
     const {cartItems, emptyCart} = useContext(Context)
     const cartImgs = cartItems.map(item => <CartItem key={item.id} item={item} />)
     
     const placeOrder = event => {
-        let {innerText, style} = event.target
+        let {style} = event.target
         console.log(event)
-        innerText = "Ordering..."
+        setButtonText("Ordering...")
         style.cursor = "not-allowed"
         setTimeout(() => {
-            innerText = "Order Placed"
-            // emptyCart()
+            setButtonText("Order Placed")
+            emptyCart()
         }, 3000)
-        setIsOrdered(true)
     }
 
 
@@ -25,7 +24,7 @@ function Cart() {
             {cartImgs}
             <p className="total-cost">Total: {(cartImgs.length * 5.99).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
             <div className="order-button">
-                <button onClick={ e => placeOrder(e)} >Place Order</button>
+                <button onClick={ e => placeOrder(e)} >{buttonText}</button>
             </div>
         </>
     )
