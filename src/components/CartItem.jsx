@@ -1,21 +1,30 @@
 import { Context } from "./ContextProvider";
 import { useContext, useState } from "react";
+import PropTypes from 'prop-types'
 
-export default function CartItem({item}) {
-    const {url, id} = item
+function CartItem({item}) {
     const {removeFromCart} = useContext(Context)
     const [isHovered, setIsHovered] = useState(false)
-
+    
     return (
         <div className='cart-item'>
             <i 
                 onClick={() => removeFromCart(item)} 
                 onMouseEnter={() => setIsHovered(prev => !prev)}
                 onMouseLeave={() => setIsHovered(prev => !prev)}
-                className={`ri-delete-bin-${isHovered ? "fill" : "line"}`}>
+                className={`ri-delete-bin-${isHovered ? "fill" : "line"}`}
+            >
             </i>
-            <img src={url} width="200px" />
+            <img src={item.url} width="200px" />
             <p>$5.99</p>
         </div>
     )
 }
+
+CartItem.propTypes = {
+    item: PropTypes.shape({
+        url: PropTypes.string.isRequired
+    })
+}
+
+export default CartItem
