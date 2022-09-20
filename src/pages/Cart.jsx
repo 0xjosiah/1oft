@@ -1,12 +1,11 @@
 import { useContext } from "react"
+import CartItem from "../components/CartItem"
 import { Context } from "../components/ContextProvider"
 
 function Cart() {
     const {cartItems} = useContext(Context)
-    const cartImgs = cartItems.map(i => (
-        <div className='cart-item'>
-            <img src={i.url} />
-        </div>
+    const cartImgs = cartItems.map(img => (
+        <CartItem img={img} />
     ))
     return (
         <main className="cart-page">
