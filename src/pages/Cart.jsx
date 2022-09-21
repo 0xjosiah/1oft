@@ -5,11 +5,11 @@ import { Context } from "../components/ContextProvider"
 function Cart() {
     const [buttonText, setButtonText] = useState("Place Order")
     const {cartItems, emptyCart} = useContext(Context)
+
     const cartImgs = cartItems.map(item => <CartItem key={item.id} item={item} />)
     
     const placeOrder = event => {
         let {style} = event.target
-        console.log(event)
         setButtonText("Ordering...")
         style.cursor = "not-allowed"
         setTimeout(() => {

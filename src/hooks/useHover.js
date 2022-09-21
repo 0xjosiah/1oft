@@ -2,22 +2,23 @@ import { useEffect, useRef, useState } from "react";
 
 function useHover() {
     const [isHovered, setIsHovered] = useState(false)
-    const mouseRef = useRef(null)
+    const ref = useRef(null)
 
-    const enter = () => setIsHovered(p => !p)
-    const leave = () => setIsHovered(p => !p)
+    const enter = () => setIsHovered(true)
+    const leave = () => setIsHovered(false)
 
     useEffect(() => {
-        mouseRef.current.addEventListener('mouseenter', enter)
-        mouseRef.current.addEventListener('mouseleave', leave)
-
-        return () => {
-            mouseRef.current.removeEventListener('mouseleave', leave)
-            mouseRef.current.removeEventListener('mouseenter', enter)
+        const instance = ref.current
+        instance.addEventListener("mouseenter", enter)
+        instance.addEventListener("mouseleave", leave)
+        
+        return () => {    
+            instance.removeEventListener("mouseenter", enter)
+            instance.removeEventListener("mouseleave", leave)
         }
     }, [])
 
-    return [isHovered, mouseRef]
+    return [isHovered, ref]
 }
 
 export default useHover
