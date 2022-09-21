@@ -22,7 +22,9 @@ function Cart() {
     const checkOutUI = (
         <>
             {cartImgs}
-            <p className="total-cost">Total: {(cartImgs.length * 5.99).toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
+            <p className="total-cost">
+                Total: {(cartImgs.length * 5.99).toLocaleString("en-US", {style: "currency", currency: "USD"})}
+            </p>
             <div className="order-button">
                 <button onClick={ e => placeOrder(e)} >{buttonText}</button>
             </div>
