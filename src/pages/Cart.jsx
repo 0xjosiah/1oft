@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import CartItem from "../components/CartItem"
 import { Context } from "../components/ContextProvider"
 
@@ -10,8 +10,8 @@ function Cart() {
     
     const placeOrder = event => {
         let {style} = event.target
-        setButtonText("Ordering...")
         style.cursor = "not-allowed"
+        setButtonText("Ordering...")
         setTimeout(() => {
             setButtonText("Order Placed")
             emptyCart()

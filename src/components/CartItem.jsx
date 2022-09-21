@@ -1,13 +1,11 @@
 import { Context } from "./ContextProvider";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import PropTypes from 'prop-types'
 import useHover from "../hooks/useHover";
 
 function CartItem({item}) {
     const {removeFromCart} = useContext(Context)
-    // const [isHovered, setIsHovered] = useState(false)
     const [isHovered, ref] = useHover()
-
     
     return (
         <div className='cart-item'>

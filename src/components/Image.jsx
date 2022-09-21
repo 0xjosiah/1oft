@@ -1,10 +1,9 @@
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import PropTypes from "prop-types"
 import { Context } from "./ContextProvider"
 import useHover from "../hooks/useHover"
 
 function Image({className, img}) {
-    // const [isHovered, setIsHovered] = useState(false)
     const [isHovered, ref] = useHover()
     const {toggleFavorite, addToCart, cartItems, removeFromCart} = useContext(Context)
     const {url, id, isFavorite} = img

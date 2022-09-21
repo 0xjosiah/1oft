@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Header from './components/Header'
 import {Route, Routes} from 'react-router-dom'
 import Pieces from './pages/Pieces'
